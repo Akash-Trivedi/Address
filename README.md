@@ -15,5 +15,9 @@ Download the jar executable from the build directory( path : Address/build/deplo
  ### Prerequisites
     Java version 1.8 or above.
 Install latest java version from [here](https://www.java.com/en/download/manual.jsp).
+
+## Licence
+
+See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
    
     
