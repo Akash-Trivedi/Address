@@ -5,6 +5,7 @@ import java.time.Month;
 
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import com.akatri.address.util.ImageAdapter;
 import com.akatri.address.util.LocalDateAdapter;
 
 import javafx.beans.property.IntegerProperty;
@@ -15,6 +16,7 @@ import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.image.Image;
 
 public class Person {
 	private final StringProperty firstName;
@@ -24,6 +26,7 @@ public class Person {
 	private final SimpleStringProperty contact;
 	private final StringProperty city;
 	private final ObjectProperty<LocalDate> birthday;
+	private final ObjectProperty<Image> image;
 
 	public Person() {
 		this(null, null);
@@ -33,12 +36,12 @@ public class Person {
 
 		this.firstName = new SimpleStringProperty(firstName);
 		this.lastName = new SimpleStringProperty(lastName);
-		this.address = new SimpleStringProperty("");
-		this.city = new SimpleStringProperty("Amroha");
-		this.contact = new SimpleStringProperty("");
+		this.address = new SimpleStringProperty("some address");
+		this.city = new SimpleStringProperty("some city");
+		this.contact = new SimpleStringProperty("1234567890");
 		this.zipCode = new SimpleIntegerProperty(244221);
 		this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(1993, Month.JANUARY, 6));
-
+        this.image=new SimpleObjectProperty<Image>(null);
 	}
 
 	public String getfirstName() {
@@ -108,6 +111,15 @@ public class Person {
 	public void setbirthday(LocalDate birthday) {
 
 		this.birthday.set(birthday);
+	}
+	public void setimage(Image image) {
+		
+		this.image.set(image);
+	}
+	@XmlJavaTypeAdapter(ImageAdapter.class)
+	public Image getimage() {
+		return image.get();
+		
 	}
 
 }

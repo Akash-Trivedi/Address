@@ -74,7 +74,7 @@ public class RootLayoutController {
 
 	@FXML
 	private void handleExit() {
-		System.exit(0);
+		mainApp.getPrimaryStage().hide();
 	}
 
 }

@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.ImageView;
 
 public class PersonOverviewController {
 	@FXML
@@ -38,6 +39,8 @@ public class PersonOverviewController {
 	private Button add;
 	@FXML
 	private Button edit;
+	@FXML
+	private ImageView imgview;
 
 	private MainApp mainApp;
 
@@ -70,6 +73,7 @@ public class PersonOverviewController {
 			address.setText(person.getaddress());
 			birthday.setText(person.getbirthday().toString());
 			contact.setText(person.getcontact());
+			imgview.setImage(person.getimage());
 		} else {
 			firstName.setText("");
 			lastName.setText("");
@@ -78,6 +82,7 @@ public class PersonOverviewController {
 			address.setText("");
 			birthday.setText("");
 			contact.setText("");
+			imgview.setImage(null);
 		}
 
 	}
@@ -119,6 +124,8 @@ public class PersonOverviewController {
 			mainApp.getPersonData().add(temp);
 		}
 		
-	}		
+	}
+
+	
 
 }

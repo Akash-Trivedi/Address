@@ -20,6 +20,11 @@
     -fx-text-fill: white;
     -fx-opacity: 1.0;
 }
+.hbox-outer{
+	
+	-fx-border-color: white;
+    -fx-border-width: 1;
+}
 .label-rightHeader{
 	 -fx-font-size: 20.0pt;
     -fx-font-family: "Segoe UI Light";

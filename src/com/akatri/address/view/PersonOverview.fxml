@@ -9,13 +9,15 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane styleClass="background" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.akatri.address.view.PersonOverviewController">
+<AnchorPane prefHeight="400.0" styleClass="background" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.akatri.address.view.PersonOverviewController">
    <children>
       <AnchorPane prefHeight="300.0" prefWidth="600.0" />
       <SplitPane dividerPositions="0.36833333333333335" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -43,7 +45,7 @@
                         <String fx:value="label-bright" />
                         <String fx:value="label-rightHeader" />
                      </styleClass></Label>
-                  <GridPane layoutX="4.0" layoutY="39.0" prefHeight="201.0" prefWidth="365.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="39.0">
+                  <GridPane layoutX="-2.0" layoutY="127.0" prefHeight="203.0" prefWidth="363.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="127.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -84,6 +86,14 @@
                         <Button fx:id="delete" mnemonicParsing="false" onAction="#handleDeletion" text="Delete" />
                     </buttons>
                   </ButtonBar>
+                  <HBox alignment="TOP_RIGHT" layoutX="215.0" layoutY="10.0" prefHeight="106.0" prefWidth="135.0" styleClass="hbox-outer" stylesheets="@Theme.css" AnchorPane.rightAnchor="8.0">
+                     <children>
+                        <ImageView fx:id="imgview" cache="true" fitHeight="115.0" fitWidth="133.0" focusTraversable="true" nodeOrientation="INHERIT" pickOnBounds="true" x="227.0" y="8.0" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin></ImageView>
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
         </items>

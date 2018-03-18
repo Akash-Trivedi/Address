@@ -1,5 +1,12 @@
 package com.akatri.address.view;
 
+import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
@@ -9,8 +16,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
 public class PersonEditDialogController {
@@ -32,6 +42,10 @@ public class PersonEditDialogController {
 	private Button save;
 	@FXML
 	private Button cancel;
+	@FXML
+	private Button uploadPic;
+	@FXML
+	private ImageView imgview;
 
 	private boolean isOKClicked;
 
@@ -49,10 +63,39 @@ public class PersonEditDialogController {
 			person.setcontact(contact.getText());
 			person.setzipcode(Integer.parseInt(zipcode.getText()));
 			person.setbirthday(LocalDate.parse(birthday.getText()));
+			person.setimage(imgview.getImage());
 
 			isOKClicked = true;
 			stage.close();
 		}
+	}
+
+	@FXML
+	private void handleUpload() {
+
+		FileChooser filechooser = new FileChooser();
+		FileChooser.ExtensionFilter jpgFilter = new ExtensionFilter("JPG(*.JPG)", "*.JPG");
+		FileChooser.ExtensionFilter pngFilter = new ExtensionFilter("PNG(*.PNG)", "*.PNG");
+		FileChooser.ExtensionFilter pngFilter2 = new ExtensionFilter("png(*.png)", "*.png");
+		filechooser.getExtensionFilters().addAll(jpgFilter, pngFilter, pngFilter2);
+		File file = filechooser.showOpenDialog(stage);
+
+		InputStream is = null;
+		try {
+			is = new BufferedInputStream(new FileInputStream(file.getPath()));
+		} catch (Exception e1) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.initOwner(stage);
+			alert.setTitle("Invalid Image");
+			alert.setHeaderText("Please Choose Valid Image");
+			alert.setContentText("Error in parsing image.");
+			alert.showAndWait();
+
+		}
+		Image image = new Image(is);
+
+		imgview.setImage(image);
+
 	}
 
 	private boolean isValidInput() {
@@ -129,6 +172,7 @@ public class PersonEditDialogController {
 		zipcode.setText(String.valueOf(person.getzipcode()));
 		contact.setText(person.getcontact().toString());
 		birthday.setText(person.getbirthday().toString());
+		imgview.setImage(person.getimage());
 
 	}
 
