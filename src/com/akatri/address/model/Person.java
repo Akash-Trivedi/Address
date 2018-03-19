@@ -25,6 +25,7 @@ public class Person {
 	private final IntegerProperty zipCode;
 	private final SimpleStringProperty contact;
 	private final StringProperty city;
+	private final StringProperty occupation;
 	private final ObjectProperty<LocalDate> birthday;
 	private final ObjectProperty<Image> image;
 
@@ -39,9 +40,10 @@ public class Person {
 		this.address = new SimpleStringProperty("some address");
 		this.city = new SimpleStringProperty("some city");
 		this.contact = new SimpleStringProperty("1234567890");
-		this.zipCode = new SimpleIntegerProperty(244221);
+		this.zipCode = new SimpleIntegerProperty(123456);
+		this.occupation=new SimpleStringProperty("Occupation..");
 		this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(1993, Month.JANUARY, 6));
-        this.image=new SimpleObjectProperty<Image>(null);
+		this.image = new SimpleObjectProperty<Image>(null);
 	}
 
 	public String getfirstName() {
@@ -93,6 +95,14 @@ public class Person {
 		this.city.set(city);
 	}
 
+	public void setoccupation(String occupation) {
+		this.occupation.set(occupation);
+	}
+
+	public String getoccupation() {
+		return occupation.get();
+	}
+
 	@XmlJavaTypeAdapter(LocalDateAdapter.class)
 	public LocalDate getbirthday() {
 		return birthday.get();
@@ -112,14 +122,16 @@ public class Person {
 
 		this.birthday.set(birthday);
 	}
+
 	public void setimage(Image image) {
-		
+
 		this.image.set(image);
 	}
+
 	@XmlJavaTypeAdapter(ImageAdapter.class)
 	public Image getimage() {
 		return image.get();
-		
+
 	}
 
 }

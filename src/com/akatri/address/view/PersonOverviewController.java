@@ -33,6 +33,10 @@ public class PersonOverviewController {
 	private Label birthday;
 	@FXML
 	private Label contact;
+
+	@FXML
+	private Label occupation;
+
 	@FXML
 	private Button delete;
 	@FXML
@@ -73,6 +77,7 @@ public class PersonOverviewController {
 			address.setText(person.getaddress());
 			birthday.setText(person.getbirthday().toString());
 			contact.setText(person.getcontact());
+			occupation.setText(person.getoccupation());
 			imgview.setImage(person.getimage());
 		} else {
 			firstName.setText("");
@@ -82,6 +87,7 @@ public class PersonOverviewController {
 			address.setText("");
 			birthday.setText("");
 			contact.setText("");
+			occupation.setText("");
 			imgview.setImage(null);
 		}
 
@@ -117,15 +123,13 @@ public class PersonOverviewController {
 
 	@FXML
 	private void handleNewPerson() {
-		
-		Person temp=new Person();
-		boolean isValidPerson=mainApp.showPersonEditDialog(temp);
-		if(isValidPerson) {
+
+		Person temp = new Person();
+		boolean isValidPerson = mainApp.showPersonEditDialog(temp);
+		if (isValidPerson) {
 			mainApp.getPersonData().add(temp);
 		}
-		
-	}
 
-	
+	}
 
 }

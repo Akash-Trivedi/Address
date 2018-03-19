@@ -39,6 +39,8 @@ public class PersonEditDialogController {
 	@FXML
 	private TextField contact;
 	@FXML
+	private TextField occupation;
+	@FXML
 	private Button save;
 	@FXML
 	private Button cancel;
@@ -64,6 +66,7 @@ public class PersonEditDialogController {
 			person.setzipcode(Integer.parseInt(zipcode.getText()));
 			person.setbirthday(LocalDate.parse(birthday.getText()));
 			person.setimage(imgview.getImage());
+			person.setoccupation(occupation.getText());
 
 			isOKClicked = true;
 			stage.close();
@@ -172,6 +175,7 @@ public class PersonEditDialogController {
 		zipcode.setText(String.valueOf(person.getzipcode()));
 		contact.setText(person.getcontact().toString());
 		birthday.setText(person.getbirthday().toString());
+		occupation.setText(person.getoccupation());
 		imgview.setImage(person.getimage());
 
 	}
